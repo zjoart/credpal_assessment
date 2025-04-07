@@ -16,7 +16,7 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 161,
+        height: 50,
         width: 174,
         margin: margin,
         padding: const EdgeInsets.only(
@@ -56,44 +56,49 @@ class ProductCard extends StatelessWidget {
                   bottom: 45,
                   left: 0,
                   child: Container(
-                    // height: 50,
-                    // width: 50,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 7,
-                    ),
-                    decoration: const BoxDecoration(
-                      color: AppColors.white,
-                      shape: BoxShape.circle,
-                    ),
-                    alignment: Alignment.center,
-                    child: Text.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(
-                            text: "Pay\n",
-                            style: AppTextStyles.font12Weight500.copyWith(
-                              color: AppColors.colorB3B3CC,
-                            ),
-                          ),
-                          TextSpan(
-                            text: "40%",
-                            style: AppTextStyles.font14Weight800.copyWith(
-                              color: AppColors.colorF274FED,
-                            ),
-                          ),
-                        ],
+                      // height: 50,
+                      // width: 50,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 7,
                       ),
-                    ),
-                  ),
+                      decoration: const BoxDecoration(
+                        color: AppColors.white,
+                        shape: BoxShape.circle,
+                      ),
+                      alignment: Alignment.center,
+                      child: switch (model) {
+                        DefaultProductCardModel(:final logoUrl) => Image.asset(
+                            logoUrl,
+                            height: 25,
+                            width: 35,
+                          ),
+                        DiscountedProductCardModel(:final discountPercentage) =>
+                          Text.rich(
+                            TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: "Pay\n",
+                                  style: AppTextStyles.font12Weight500.copyWith(
+                                    color: AppColors.colorB3B3CC,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text:
+                                      "${discountPercentage.toString().replaceAll(".00", "").replaceAll(".0", "")}%",
+                                  style: AppTextStyles.font14Weight800.copyWith(
+                                    color: AppColors.colorF274FED,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                      }),
                 )
               ],
             ),
-            const SizedBox(
-              height: 13,
-            ),
             Text(
-              "Activate Credit",
+              model.title,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: AppTextStyles.font14Weight800.copyWith(

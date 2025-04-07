@@ -13,7 +13,9 @@ sealed class ProductCardModel {
 }
 
 class DefaultProductCardModel extends ProductCardModel {
+  final String logoUrl;
   const DefaultProductCardModel({
+    required this.logoUrl,
     required super.imageUrl,
     required super.title,
     required super.price,

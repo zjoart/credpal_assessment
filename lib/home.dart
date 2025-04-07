@@ -108,7 +108,66 @@ class HomePage extends StatelessWidget {
                 color: AppColors.colorF1F3FE,
                 height: 405,
                 child: () {
-                  const itemCount = 8;
+                  final models = [
+                    const DiscountedProductCardModel(
+                      title: "Nokia G20",
+                      imageUrl: "assets/pngs/image_1.png",
+                      price: "₦ 295,999",
+                      discount: "₦ 315,000",
+                      discountPercentage: 40,
+                    ),
+                    const DefaultProductCardModel(
+                      title: "Anker SoundcoreMini 3",
+                      imageUrl: "assets/pngs/image_2.png",
+                      price: "₦ 295,999",
+                      discount: "₦ 315,000",
+                      logoUrl: "assets/pngs/logo_1.png",
+                    ),
+                    const DefaultProductCardModel(
+                      title: "iPhone XS Max 4GB min",
+                      imageUrl: "assets/pngs/image_3.png",
+                      price: "₦ 295,999",
+                      discount: "₦ 315,000",
+                      logoUrl: "assets/pngs/logo_2.png",
+                    ),
+                    const DefaultProductCardModel(
+                      title: "iPhone 12 Pro",
+                      imageUrl: "assets/pngs/image_4.png",
+                      price: "₦ 295,999",
+                      discount: "₦ 315,000",
+                      logoUrl: "assets/pngs/logo_3.png",
+                    ),
+                    const DefaultProductCardModel(
+                      title: "Anker SoundcoreMini 3",
+                      imageUrl: "assets/pngs/image_2.png",
+                      price: "₦ 295,999",
+                      discount: "₦ 315,000",
+                      logoUrl: "assets/pngs/logo_1.png",
+                    ),
+                    const DiscountedProductCardModel(
+                      title: "Nokia G20",
+                      imageUrl: "assets/pngs/image_1.png",
+                      price: "₦ 295,999",
+                      discount: "₦ 315,000",
+                      discountPercentage: 40,
+                    ),
+                    const DefaultProductCardModel(
+                      title: "iPhone 12 Pro",
+                      imageUrl: "assets/pngs/image_4.png",
+                      price: "₦ 295,999",
+                      discount: "₦ 315,000",
+                      logoUrl: "assets/pngs/logo_3.png",
+                    ),
+                    const DefaultProductCardModel(
+                      title: "iPhone XS Max 4GB min",
+                      imageUrl: "assets/pngs/image_3.png",
+                      price: "₦ 295,999",
+                      discount: "₦ 315,000",
+                      logoUrl: "assets/pngs/logo_2.png",
+                    ),
+                  ];
+
+                  final itemCount = models.length;
 
                   return GridView.builder(
                       scrollDirection: Axis.horizontal,
@@ -116,29 +175,20 @@ class HomePage extends StatelessWidget {
                       padding: const EdgeInsets.only(
                         top: 14,
                         bottom: 17,
+                        left: 20,
+                        right: 20,
                       ),
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
-                        childAspectRatio: 0.95,
-                        crossAxisSpacing: 16,
-                        mainAxisSpacing: 16,
+                        childAspectRatio: 1,
+                        crossAxisSpacing: 26,
+                        mainAxisSpacing: 24,
                         crossAxisCount: 2,
                       ),
                       itemBuilder: (context, index) {
                         return ProductCard(
-                          margin: EdgeInsets.only(
-                            left: (index == 0) || (index == 1) ? 20 : 0,
-                            right: (index == itemCount - 1) ||
-                                    (index == itemCount - 2)
-                                ? 20
-                                : 0,
-                          ),
-                          model: const DefaultProductCardModel(
-                            title: "iPhone XS Max 4GB     ",
-                            imageUrl: "assets/pngs/image_1.png",
-                            price: "₦ 295,999",
-                            discount: "₦ 315,000",
-                          ),
+                          margin: null,
+                          model: models[index],
                         );
                       });
                 }()),
