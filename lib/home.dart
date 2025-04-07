@@ -1,5 +1,6 @@
 import 'package:credpal_assessment/colors.dart';
 import 'package:credpal_assessment/text_styles.dart';
+import 'package:credpal_assessment/widgets/merchant_card.dart';
 import 'package:credpal_assessment/widgets/product_card/model.dart';
 import 'package:credpal_assessment/widgets/product_card/widget.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +59,7 @@ class HomePage extends StatelessWidget {
                               child: Text(
                                 "!",
                                 style: AppTextStyles.font12Weight700.copyWith(
-                                  color: AppColors.colorF274FED,
+                                  color: AppColors.color274FED,
                                   fontFamily:
                                       AppTextStyles.productSansFontFamily,
                                 ),
@@ -87,7 +88,7 @@ class HomePage extends StatelessWidget {
                           horizontal: 16,
                         ),
                         decoration: BoxDecoration(
-                            color: AppColors.colorF274FED,
+                            color: AppColors.color274FED,
                             borderRadius: BorderRadius.circular(4)),
                         child: Text(
                           "Activate Credit",
@@ -193,14 +194,66 @@ class HomePage extends StatelessWidget {
                       });
                 }()),
           ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return ListTile(
-                  title: Text('Item #$index'),
-                );
-              },
-              childCount: 100,
+          SliverToBoxAdapter(
+            child: Container(
+              color: AppColors.white,
+              padding: const EdgeInsets.only(
+                left: 20,
+                right: 20,
+                top: 33,
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Featured Merchants",
+                        style: AppTextStyles.font16Weight900.copyWith(
+                          color: AppColors.color33334D,
+                        ),
+                      ),
+                      Text(
+                        "View all",
+                        style: AppTextStyles.font12Weight400.copyWith(
+                            color: AppColors.color274FED,
+                            fontFamily: AppTextStyles.productSansFontFamily),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 37,
+                  ),
+                  () {
+                    final models = <({String text, String image})>[
+                      (text: "ogabassey", image: "assets/pngs/merchant_1.png"),
+                      (text: "Slot", image: "assets/pngs/merchant_2.png"),
+                      (
+                        text: "Orile Restaurant",
+                        image: "assets/pngs/merchant_3.png"
+                      ),
+                      (text: "Justrite", image: "assets/pngs/merchant_4.png"),
+                      (text: "Pointek", image: "assets/pngs/merchant_5.png"),
+                      (text: "Hubmart", image: "assets/pngs/merchant_6.png"),
+                      (
+                        text: "Orile Restaurant",
+                        image: "assets/pngs/merchant_3.png"
+                      ),
+                      (text: "Justrite", image: "assets/pngs/merchant_4.png"),
+                      (text: "Pointek", image: "assets/pngs/merchant_5.png"),
+                    ];
+
+                    return Wrap(
+                      runSpacing: 31,
+                      spacing: 20,
+                      children: List.generate(
+                        models.length,
+                        (index) => MerchantCard(model: models[index]),
+                      ),
+                    );
+                  }()
+                ],
+              ),
             ),
           ),
         ],

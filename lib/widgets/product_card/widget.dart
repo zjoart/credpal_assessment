@@ -87,7 +87,7 @@ class ProductCard extends StatelessWidget {
                                   text:
                                       "${discountPercentage.toString().replaceAll(".00", "").replaceAll(".0", "")}%",
                                   style: AppTextStyles.font14Weight800.copyWith(
-                                    color: AppColors.colorF274FED,
+                                    color: AppColors.color274FED,
                                   ),
                                 ),
                               ],
@@ -114,7 +114,7 @@ class ProductCard extends StatelessWidget {
                 Text(
                   model.price,
                   style: AppTextStyles.font14Weight800.copyWith(
-                    color: AppColors.colorF274FED,
+                    color: AppColors.color274FED,
                   ),
                 ),
                 Text(
